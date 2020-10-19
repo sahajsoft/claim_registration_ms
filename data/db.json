@@ -1,0 +1,15 @@
+{
+  "ids": {
+    "RegistrationRequest": 3,
+    "UserTask": 2
+  },
+  "models": {
+    "RegistrationRequest": {
+      "1": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"1\",\"id\":\"1\"}",
+      "2": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"1\",\"id\":\"2\"}"
+    },
+    "UserTask": {
+      "1": "{\"userId\":\"u1\",\"registrationId\":\"1\",\"id\":1}"
+    }
+  }
+}
