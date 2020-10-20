@@ -1,15 +1,46 @@
 {
   "ids": {
-    "RegistrationRequest": 3,
-    "UserTask": 2
+    "RegistrationRequest": 11,
+    "UserTask": 13,
+    "Claim": 10
   },
   "models": {
     "RegistrationRequest": {
-      "1": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"1\",\"id\":\"1\"}",
-      "2": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"1\",\"id\":\"2\"}"
+      "1": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"1\"}",
+      "2": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"2\"}",
+      "3": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"3\"}",
+      "4": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"4\"}",
+      "5": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"5\"}",
+      "6": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"6\"}",
+      "7": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"7\"}",
+      "8": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"8\"}",
+      "9": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"9\"}",
+      "10": "{\"type\":\"pre-auth\",\"subType\":\"new\",\"memberId\":\"mb1\",\"id\":\"10\"}"
     },
     "UserTask": {
-      "1": "{\"userId\":\"u1\",\"registrationId\":\"1\",\"id\":1}"
+      "1": "{\"userId\":\"deo_1\",\"inwardId\":\"13\",\"id\":1}",
+      "2": "{\"userId\":\"deo_1\",\"inwardId\":\"1\",\"id\":2}",
+      "3": "{\"userId\":\"deo_1\",\"inwardId\":\"2\",\"id\":3}",
+      "4": "{\"userId\":\"deo_1\",\"inwardId\":\"3\",\"id\":4}",
+      "5": "{\"userId\":\"deo_1\",\"inwardId\":\"4\",\"id\":5}",
+      "6": "{\"userId\":\"deo_1\",\"inwardId\":\"5\",\"id\":6}",
+      "7": "{\"userId\":\"deo_1\",\"inwardId\":\"6\",\"id\":7}",
+      "8": "{\"userId\":\"deo_1\",\"inwardId\":\"7\",\"status\":\"completed\",\"id\":8}",
+      "9": "{\"userId\":\"deo_1\",\"inwardId\":\"8\",\"status\":\"completed\",\"id\":9}",
+      "10": "{\"userId\":\"deo_1\",\"inwardId\":\"9\",\"status\":\"completed\",\"id\":10}",
+      "11": "{\"userId\":\"ma_1\",\"inwardId\":\"9\",\"status\":\"in_progress\",\"id\":11}",
+      "12": "{\"userId\":\"deo_1\",\"inwardId\":\"10\",\"status\":\"completed\",\"id\":12}"
+    },
+    "Claim": {
+      "1": "{\"inwardId\":\"3\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":1}",
+      "2": "{\"inwardId\":\"3\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":2}",
+      "3": "{\"inwardId\":\"4\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":3}",
+      "4": "{\"inwardId\":\"5\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":4}",
+      "5": "{\"inwardId\":\"6\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":5}",
+      "6": "{\"inwardId\":\"7\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":6}",
+      "7": "{\"inwardId\":\"8\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":7}",
+      "8": "{\"inwardId\":\"9\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"suspended\",\"subStatus\":\"registered\",\"id\":8}",
+      "9": "{\"inwardId\":\"10\",\"memberId\":\"mb1\",\"policyNumber\":\"1\",\"claimedAmount\":\"123\",\"approvedAmount\":\"1\",\"status\":\"closed\",\"subStatus\":\"registered\",\"id\":9}"
     }
   }
 }

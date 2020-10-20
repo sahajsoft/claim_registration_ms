@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:zeebe="http://camunda.org/schema/zeebe/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1k8pgqk" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Zeebe Modeler" exporterVersion="0.10.0">
+  <bpmn:process id="preauth_registration" name="PreAuth Registration" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_0nqmmqq</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_0nqmmqq" sourceRef="StartEvent_1" targetRef="Activity_13wwfm7" />
+    <bpmn:serviceTask id="Activity_13wwfm7" name="Assign to DEO">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="assign_to_deo" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0nqmmqq</bpmn:incoming>
+      <bpmn:outgoing>Flow_1otjvvm</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1otjvvm" sourceRef="Activity_13wwfm7" targetRef="Activity_0pzo353" />
+    <bpmn:receiveTask id="Activity_0pzo353" name="Wait for deo to register claim" messageRef="Message_0wervxv">
+      <bpmn:incoming>Flow_1otjvvm</bpmn:incoming>
+      <bpmn:outgoing>Flow_0u705ay</bpmn:outgoing>
+    </bpmn:receiveTask>
+    <bpmn:sequenceFlow id="Flow_0u705ay" sourceRef="Activity_0pzo353" targetRef="Activity_07pcuwq" />
+    <bpmn:serviceTask id="Activity_07pcuwq" name="Mark DEO task completed">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="task_completed" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0u705ay</bpmn:incoming>
+      <bpmn:outgoing>Flow_1y6l19p</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:serviceTask id="Activity_0akl44y" name="assign to medical adjudication">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="assign_to_medical_adjudication" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1xrbg45</bpmn:incoming>
+      <bpmn:outgoing>Flow_15lk07s</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_1gk6pfp">
+      <bpmn:incoming>Flow_1y6l19p</bpmn:incoming>
+      <bpmn:outgoing>Flow_1xrbg45</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1a8lwpg</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1y6l19p" sourceRef="Activity_07pcuwq" targetRef="Gateway_1gk6pfp" />
+    <bpmn:sequenceFlow id="Flow_1xrbg45" name="if approved" sourceRef="Gateway_1gk6pfp" targetRef="Activity_0akl44y">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=status="suspended"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="Event_0re5qsc">
+      <bpmn:incoming>Flow_1a8lwpg</bpmn:incoming>
+      <bpmn:incoming>Flow_15lk07s</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1a8lwpg" name="if rejected" sourceRef="Gateway_1gk6pfp" targetRef="Event_0re5qsc">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=status="closed"</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_15lk07s" sourceRef="Activity_0akl44y" targetRef="Event_0re5qsc" />
+  </bpmn:process>
+  <bpmn:message id="Message_0wervxv" name="deo_registration_completion">
+    <bpmn:extensionElements>
+      <zeebe:subscription correlationKey="=inwardId" />
+    </bpmn:extensionElements>
+  </bpmn:message>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="preauth_registration">
+      <bpmndi:BPMNEdge id="Flow_0nqmmqq_di" bpmnElement="Flow_0nqmmqq">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1otjvvm_di" bpmnElement="Flow_1otjvvm">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="430" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0u705ay_di" bpmnElement="Flow_0u705ay">
+        <di:waypoint x="530" y="117" />
+        <di:waypoint x="590" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1y6l19p_di" bpmnElement="Flow_1y6l19p">
+        <di:waypoint x="690" y="117" />
+        <di:waypoint x="755" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xrbg45_di" bpmnElement="Flow_1xrbg45">
+        <di:waypoint x="780" y="142" />
+        <di:waypoint x="780" y="230" />
+        <di:waypoint x="800" y="230" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="722" y="173" width="55" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1a8lwpg_di" bpmnElement="Flow_1a8lwpg">
+        <di:waypoint x="805" y="117" />
+        <di:waypoint x="874" y="117" />
+        <di:waypoint x="874" y="110" />
+        <di:waypoint x="942" y="110" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="850" y="83" width="48" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_15lk07s_di" bpmnElement="Flow_15lk07s">
+        <di:waypoint x="900" y="230" />
+        <di:waypoint x="960" y="230" />
+        <di:waypoint x="960" y="128" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0w1yedg_di" bpmnElement="Activity_13wwfm7">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ihaijt_di" bpmnElement="Activity_0pzo353">
+        <dc:Bounds x="430" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0m1f9ya_di" bpmnElement="Activity_07pcuwq">
+        <dc:Bounds x="590" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ipba2n_di" bpmnElement="Activity_0akl44y">
+        <dc:Bounds x="800" y="190" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1gk6pfp_di" bpmnElement="Gateway_1gk6pfp" isMarkerVisible="true">
+        <dc:Bounds x="755" y="92" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0re5qsc_di" bpmnElement="Event_0re5qsc">
+        <dc:Bounds x="942" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
