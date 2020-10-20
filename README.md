@@ -42,3 +42,9 @@ http://localhost:3000/claim
 ``` 
 This will be used to register claim details. Until this API is been called, the workflow instance will be paused. Once Claim is registered the instance will continue its execution. The workflow will continue its execution path based on the status been sent while registering.
 
+#### Prometheus Metrics API
+```
+http://localhost:3000/metrics
+``` 
+This API will expose all prometheus matrices. 
+
