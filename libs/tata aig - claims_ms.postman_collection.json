@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "ac86b6c0-f3fa-47bb-bfcf-e7f794f23d1b",
+		"name": "tata aig - sample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create/update workflow",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/workflow",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"workflow"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create preauth registration request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0699b781-909b-4c60-af27-9b2ebcb76c10",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"postman.setEnvironmentVariable(\"inwardId\", jsonData.id);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"type\": \"pre-auth\",\n    \"subType\": \"new\",\n    \"memberId\": \"mb1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/registration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"registration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get tasks assigned to DEO",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tasks/user/deo_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"user",
+						"deo_1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "claim registration - APPROVE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inwardId\": \"{{inwardId}}\",\n  \"memberId\": \"mb1\",\n  \"policyNumber\": \"1\",\n  \"claimedAmount\": \"123\",\n  \"approvedAmount\": \"1\",\n  \"status\": \"suspended\",\n  \"subStatus\": \"registered\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/claim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"claim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "claim registration - REJECT",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"inwardId\": \"{{inwardId}}\",\n  \"memberId\": \"mb1\",\n  \"policyNumber\": \"1\",\n  \"claimedAmount\": \"123\",\n  \"approvedAmount\": \"1\",\n  \"status\": \"closed\",\n  \"subStatus\": \"rejected\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/claim",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"claim"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get medical adjudicator tasks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/tasks/user/ma_1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"tasks",
+						"user",
+						"ma_1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "prometheus endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/metrics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"metrics"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ping",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/ping",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"ping"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

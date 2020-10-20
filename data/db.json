@@ -1,8 +1,8 @@
 {
   "ids": {
-    "RegistrationRequest": 0,
-    "UserTask": 0,
-    "Claim": 0
+    "RegistrationRequest": 1,
+    "UserTask": 1,
+    "Claim": 1
   },
   "models": {
     "RegistrationRequest": {

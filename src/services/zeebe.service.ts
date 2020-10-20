@@ -10,7 +10,7 @@ export class ZeebeService {
   zbc: ZBClient;
   
   constructor(@repository(UserTaskRepository) protected userTaskRepository: UserTaskRepository) {
-    this.zbc = new ZBClient();
+    this.zbc = new ZBClient(process.env.ZEEBE_URL ?? 'localhost:26500');
     this.zbc.createWorker('assign_to_deo', (job, complete, worker) => this.assignToDeoHandler(job, complete, worker, userTaskRepository));
     this.zbc.createWorker('task_completed', (job, complete, worker) => this.taskCompletionHandler(job, complete, worker, userTaskRepository));
     this.zbc.createWorker('assign_to_medical_adjudication', (job, complete, worker) => this.assignToMedicalAdjudication(job, complete, worker, userTaskRepository));
