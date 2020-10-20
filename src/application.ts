@@ -6,7 +6,7 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
-
+import {MetricsComponent} from '@loopback/metrics';
 export {ApplicationConfig};
 
 export class ClaimRegistrationMsApplication extends BootMixin(
@@ -27,7 +27,7 @@ export class ClaimRegistrationMsApplication extends BootMixin(
       path: '/explorer',
     });
     this.component(RestExplorerComponent);
-    
+    this.component(MetricsComponent);
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
     this.bootOptions = {

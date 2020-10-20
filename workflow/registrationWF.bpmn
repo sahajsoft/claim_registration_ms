@@ -30,7 +30,7 @@
         <zeebe:taskDefinition type="assign_to_medical_adjudication" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1xrbg45</bpmn:incoming>
-      <bpmn:outgoing>Flow_15lk07s</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1cunba8</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_1gk6pfp">
       <bpmn:incoming>Flow_1y6l19p</bpmn:incoming>
@@ -43,12 +43,20 @@
     </bpmn:sequenceFlow>
     <bpmn:endEvent id="Event_0re5qsc">
       <bpmn:incoming>Flow_1a8lwpg</bpmn:incoming>
-      <bpmn:incoming>Flow_15lk07s</bpmn:incoming>
+      <bpmn:incoming>Flow_1oc75ld</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1a8lwpg" name="if rejected" sourceRef="Gateway_1gk6pfp" targetRef="Event_0re5qsc">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">=status="closed"</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_15lk07s" sourceRef="Activity_0akl44y" targetRef="Event_0re5qsc" />
+    <bpmn:sequenceFlow id="Flow_1cunba8" sourceRef="Activity_0akl44y" targetRef="Activity_0iohbpl" />
+    <bpmn:sequenceFlow id="Flow_1oc75ld" sourceRef="Activity_0iohbpl" targetRef="Event_0re5qsc" />
+    <bpmn:serviceTask id="Activity_0iohbpl" name="Mark medical adjudication task completed">
+      <bpmn:extensionElements>
+        <zeebe:taskDefinition type="task_completed" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1cunba8</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oc75ld</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:message id="Message_0wervxv" name="deo_registration_completion">
     <bpmn:extensionElements>
@@ -90,9 +98,14 @@
           <dc:Bounds x="850" y="83" width="48" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_15lk07s_di" bpmnElement="Flow_15lk07s">
+      <bpmndi:BPMNEdge id="Flow_1cunba8_di" bpmnElement="Flow_1cunba8">
         <di:waypoint x="900" y="230" />
-        <di:waypoint x="960" y="230" />
+        <di:waypoint x="950" y="230" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oc75ld_di" bpmnElement="Flow_1oc75ld">
+        <di:waypoint x="1000" y="190" />
+        <di:waypoint x="1000" y="159" />
+        <di:waypoint x="960" y="159" />
         <di:waypoint x="960" y="128" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
@@ -115,6 +128,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0re5qsc_di" bpmnElement="Event_0re5qsc">
         <dc:Bounds x="942" y="92" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_19egfhd_di" bpmnElement="Activity_0iohbpl">
+        <dc:Bounds x="950" y="190" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

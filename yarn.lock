@@ -383,6 +383,14 @@
     reflect-metadata "^0.1.13"
     tslib "^2.0.2"
 
+"@loopback/metrics@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@loopback/metrics/-/metrics-0.4.2.tgz#c02dcef0b3e5f14a38a70753929ee3c1b7615c83"
+  integrity sha512-tCgQozLzv9EoFNCBoYzS+aiozeF9bHkkTFRM/gY07WCpewfL6ZzbGJB7ERnW0mUG9q8sc9i5UcEPZJxSw5EsJA==
+  dependencies:
+    prom-client "^12.0.0"
+    tslib "^2.0.2"
+
 "@loopback/model-api-builder@^2.1.16":
   version "2.1.16"
   resolved "https://registry.yarnpkg.com/@loopback/model-api-builder/-/model-api-builder-2.1.16.tgz#b692ebeb831dfc9501fd9457d4b2cab654aa6b8b"
@@ -1136,6 +1144,11 @@ binary-extensions@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.1.0.tgz#30fa40c9e7fe07dbc895678cd287024dea241dd9"
   integrity sha512-1Yj8h9Q+QDF5FzhMs/c9+6UntbD5MkRfRwac8DoEm9ZfUBZ7tZ55YcGVAzEe4bXsdQHEk+s9S5wsOKVdZrw0tQ==
+
+bintrees@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/bintrees/-/bintrees-1.0.1.tgz#0e655c9b9c2435eaab68bf4027226d2b55a34524"
+  integrity sha1-DmVcm5wkNeqraL9AJyJtK1WjRSQ=
 
 bl@^2.0.1:
   version "2.2.1"
@@ -4037,6 +4050,13 @@ progress@^2.0.0:
   resolved "https://registry.yarnpkg.com/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
 
+prom-client@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/prom-client/-/prom-client-12.0.0.tgz#9689379b19bd3f6ab88a9866124db9da3d76c6ed"
+  integrity sha512-JbzzHnw0VDwCvoqf8y1WDtq4wSBAbthMB1pcVI/0lzdqHGJI3KBJDXle70XK+c7Iv93Gihqo0a5LlOn+g8+DrQ==
+  dependencies:
+    tdigest "^0.1.1"
+
 promise-retry@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/promise-retry/-/promise-retry-1.1.1.tgz#6739e968e3051da20ce6497fb2b50f6911df3d6d"
@@ -4816,6 +4836,13 @@ tar@^4.4.2:
     mkdirp "^0.5.0"
     safe-buffer "^5.1.2"
     yallist "^3.0.3"
+
+tdigest@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/tdigest/-/tdigest-0.1.1.tgz#2e3cb2c39ea449e55d1e6cd91117accca4588021"
+  integrity sha1-Ljyyw56kSeVdHmzZEReszKRYgCE=
+  dependencies:
+    bintrees "1.0.1"
 
 test-exclude@^6.0.0:
   version "6.0.0"
